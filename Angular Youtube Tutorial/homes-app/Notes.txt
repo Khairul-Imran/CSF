@@ -1,0 +1,159 @@
+@Input properties:
+- Allows you to pass data into components
+- Need to think about how that data needs to be configured.
+
+This is where we used the command to generate a housingLocation interface.
+- ng generate interface housingLocation
+
+Once the interface was created, we added the necessary properties that describe the data we would be receiving.
+
+Recap:
+- We will be using @Input properties to pass data into our housing-location component
+- The housingLocation interface tells the component what type of data to expect (structure is defined by the interface)
+
+When a component is marked with the @Input decorater, it tells angular that this property can be set in a template.
+
+To do this, we have to do the following in housing-location.component: 
+1. import "Input" from @angular/core
+2. import the "housingLocation" interface
+3. in the body of the HousingLocationComponent, add a new property called housingLocation (think of this as an object's property)
+- E.g. @Input() housingLocation!:HousingLocation
+- @Input() decorater makes this property become an INPUT PROPERTY 
+- HousingLocation is the type
+- The '!' is the "Non-null assertion operator" -> this tells the typescript compiler that this value won't be null or undefined.
+- This '!' is needed, since we expect the value to be passed in, and it is not initialised yet. This would otherwise cause an error as the value would need to be initialised.
+
+We also added the "src" attribute to the img tag. Notice how it is housingLocation.photo -> references the housingLocation component.
+- We made use of PROPERTY BINDING here. This tells angular that the src value should be an actual property from the component class. 
+- This means that the right-hand side value can support dynamic values, and can be more than just strings.
+- We can do this by wrapping the src attribute in square brackets.[]
+
+- For the "alt" attribute, we also made use of {{ }} -> Angular's interpolation syntax 
+- Used for mixing in values and expressions into strings for our templates
+- We did the same for the h2 and p tags too.
+
+All of the above allows the housing-location component to accept input that we can use to customise the component.
+
+
+----------------------------------------------------next portion----------------------------------------------------
+Now we need to work with a list of locations. 
+
+Back at the home.component, we imported the HousingLocation interface.
+
+Then at the body of the home component, we added a new property called housingLocationList, of type HousingLocation (array)
+
+We got their listing data from their github, and copied it into the array.
+
+Now that we have our data, we want to be able to iterate over this data to be displayed in the results section.
+- We use the 'ngFor' directive
+- Angular directives allow us to add additional functionality to elements and components.
+- We added this directive in the housing-location component (inside the home.component)
+
+E.g.
+*ngFor="let housingLocation of housingLocationList"
+- This is known as Angular Template Syntax.
+- This code creates a template variable called "housingLocation", which represents an entry from the housingLocationList
+
+- Now we need to pass in the data from the housing-location Component using the input we get from the component
+
+E.g. 
+[housingLocation]="housingLocation"
+- Figure out how this connects
+
+----------------------------------------------------next portion----------------------------------------------------
+For styling, he just provided us with the code.
+- copy and pasted accordingly.
+
+
+----------------------------------------------------next portion----------------------------------------------------
+Here we started on the rounting
+- Routing is how we navigate around different components (pages)
+- The flow is -> Home Component -> Angular Router -> Details Component
+
+Things to do:
+- Configure the app so that it supports routing
+- Route to the component.
+
+1. First we go to main.ts to import provideRouter from @angular/router
+2. Inside the bootstrapApplication function, add another parameter called the js literal - providers:[]
+3. Inside providers, add a call to the provideRouter() function, add inside it include an empty array. 
+- This empty array represents the application routes.
+- Routes define which paths link to components in the application
+
+4. We will go to define these routes first, then we will come back to replace the empty array with these routes.
+
+5. Create a new file under src/app called routes.ts
+- Imported some stuff, and created a routeConfig variable, and exported it
+
+6. Next, we need to update the application to display components based on the current route -> done in app.component.ts
+- Import RouterModule
+- Update the imports array in the component's metadata to include this RouterModule
+- Inside the template, and inside the section with the "content" class, add <router-outlet>
+
+After making the additions above, notice that the website is now blank. This is because we have not defined any routes yet.
+
+7. Go back to routes.ts to define routes (for the homepage).
+- We added a new entry inside the routeConfig array.
+- this is an object literal, and represents a route.
+- For this specific route, it is for the home component (empty string)
+
+- To ensure that the application will use this new route definition, we have to update main.ts
+- We imported routeConfig - notice that we did not have to use the {}
+- We also replaced the empty array [] inside the provideRouter to use the routeConfig
+
+- After this, the default route now routes users to the home component!!!
+
+----------------------------------------------------next portion----------------------------------------------------
+Here we are working on the navigation to the detailed view for each property.
+1. Create the details component (use cli)
+2. Now we need a route for this component
+- Add a new route in routes.ts
+- Add a link to the details page in the housing-list component (see housing-location.component)
+    - Imported RouterModule
+    - Added RouterModule to the imports property
+    - Added the anchor tag
+
+- This now allows us to route to the details page. (to revisit this in step 3)
+
+- But there are still some things we have not done yet:
+    - No template or styling has been done for this page (we already know how to do this)
+    - How do we ensure that the appropriate housing details are shown here?
+    -> We need to have a way to identify which house the user clicked on
+    -> In this case, we will be sending information through the details route via the url and then reference the housing location
+    -> **Alternative is to pass the state and data to a route**
+
+3. In housing-location.component, we update the anchor element
+- Include property binding for the routerLink
+- We also update the value of routerLink to be an array, and added housingLocation.id
+
+- We now need to go back to the routes.ts 
+- This is because the route we wrote earlier does not specify the house that the user chose.
+- We need to define a route that matches the necessary format -> /details/id
+
+-> we need to use PARAMETERISED ROUTES
+- We update the path for details to include the id
+- Now it works, we can see the unique details page (with no content)
+
+4. Update details.component to get access to the details
+- Import Inject and ActivatedRoute
+- In the body, add the following: properties
+    - route: ActivatedRoute -> reference to the current route we are matched with in the app
+        - this gives us access to the important route information, including the parameters for finding the data we need
+    - housingLocationId = 0
+    - constructor()
+
+- In the constructor input this: this.housingLocationId = Number(this.route.snapshot.params["id"])
+- Now in the website, we are able to go to the details page, and get the correct id to display!
+
+----------------------------------------------------next portion----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
