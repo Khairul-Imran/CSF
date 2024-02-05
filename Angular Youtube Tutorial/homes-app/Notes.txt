@@ -147,13 +147,123 @@ Here we are working on the navigation to the detailed view for each property.
 
 ----------------------------------------------------next portion----------------------------------------------------
 
+- Here we start working on the service to retrieve the data
+
+1. In the CLI, we run the command to generate a service called housing
+- ng g s housing
+
+2. Open housing.service.ts 
+- Imported some things
+- Added (transferred) the housing location data to this file
+- Created 2 methods (getAllHousingLocations & getHousingLocationById)
+
+3. home.component.ts
+- Imported inject and the service class
+
+In the body of the class:
+- Instantiate your service class 
+- create the constructor
+
+Question: why are we using inject?
+- This is the concept of dependency injection
+- Where the app's components ask the framework for things that are needed to function (like the service class)
+
+4. Next, we are working on displaying the correct data in the details page.
+- Head over to details.component.ts
+- Imported HousingService and HousingLocation
+- Create the dependency injection and housingLocation property (as we did above)
+- Made changes to the constructor.
+
+- Changed from housingLocationId to housingLocation?.id
+- housingLocation.id might be undefined, so you need to guard against that using the optional chaining operator.
+- If the housing location is undefined, the id property won't be accessed. Avoids errors.
+
+5. Now we are working on the details component template
+- Still in the details.component.ts
+- Added things to the template
+- The concepts done inside the template have been done before. Just recall what the {{ }} and [] does.
 
 
+----------------------------------------------------next portion----------------------------------------------------
 
+- This portion covers Angular forms.
+    - Forms here are similar to what we've been working with before
 
+1. Head over to details.component.ts
+- Import the necessary form-related modules.
+- Note: some modules would give you access to template features -> this is where you would need to add the module name under the 'imports' property of the template.
+- Added ReactiveFormsModule into imports
 
+2. Define the form model in the body of the class.
+- Using the FormGroup (represents the data you want to collect) and FormControl
+- We have access to the FormGroup in our component class
+- When the form is bound to the template, we can keep the values that users entered into the form -> Allows us to be in sync with the form group
 
+3. Now we connect the applyForm (FormGroup) instance to the template
+- Nothing new here, just follow the patterns. 
+- Pay attention to the naming though.
+- formControlName has to be the same as what you set inside the FormGroup's FormControl attributes
 
+- We also added: (submit)="submitApplication()" to the form tag
+    - () -> this is called EVENT BINDING 
+    - submit is an event (another example of an event would be clicks)
+    - When we want to bind to an event, we use () to signal our intention to use EVENT BINDING
 
+4. Now we create the submitApplication() function inside the body of the same class.
+- We will call another function found inside our HousingService (submitApplication)
+- Example of the syntax:
+    - this.applyForm.value.firstName ?? ''
+    - '.value' allows us to access the individual values of FORM CONTROLS inside the FORM GROUP - applyForm
+    - '??' is the Nullish Coalescing Operator - which means if the value on the left of ?? is null / undefined, then the value on the right ('') is used.
 
+5. Now we create the submitApplication function inside our HousingService.
+- This function takes in the firstName, lastName and email as params.
+- For now, we will just console.log the results.
+- Later on, will change it.
 
+----------------------------------------------------next portion----------------------------------------------------
+
+- So far, the app has been getting data from the service (hard-coded)
+- Here, we will start to make http requests to get the housing data instead
+
+1. Ran this command: npm install -g json-server
+- Also created a new file in the directory (db.json)
+
+2. Head over to db.json and paste all the housing data there.
+- Removed the data in the service too.
+
+3. Start the Json server
+- json-server --watch db.json
+- Use the url to see if it is working properly
+
+4. We update the methods inside the service class
+- getAllHousingLocations
+- getHousingLocationById
+- We've updated these methods, but now we also need to make changes to the other parts of code that called these methods too!
+
+5. home.component.ts
+- update the constructor
+
+6. details.component.ts
+- upate the constructor
+
+7. We also worked on the search functionality
+- Here, we used TEMPLATE VARIABLES
+- This allows us to get a reference to an element in the template and use it in the app 
+- We do this by using the syntax: #filter
+- The '#' creates our template variable
+
+- We also add a click handler in the button
+- (click) = "filterResults(filter.value)"
+
+- Where did filter.value come from?
+- Recall that TEMPLATE VARIABLES give us access to the actual html element
+- 'value' is a property of the 'input' html element(tag)
+- Therefore, we are accessing the text value that is entered into the input field
+
+- We also update the app-housing-location tag
+- Changed housingLocationList to filteredLocationList 
+
+- We then added the filteredLocationList property into the body of the class.
+- Added filteredLocationList to the constructor too.
+- And also created the filterResults method (which was found in the onclick handler)
