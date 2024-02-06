@@ -1,0 +1,13 @@
+.container {
+    display: flex; /* Use Flexbox layout */
+}
+  
+.number-container {
+    flex: 1; /* Distribute remaining space evenly */
+    margin-right: 20px; /* Add spacing between components */
+}
+  
+.calculated-number-container {
+    flex: 1; /* Distribute remaining space evenly */
+}
+  

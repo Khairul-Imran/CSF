@@ -1,0 +1,16 @@
+
+<h2> {{ caption }}</h2>
+
+<table>
+
+</table>
+
+<!-- Alternative -->
+<!-- <div><img src="{{ image }}"></div> -->
+
+<!-- Alternative using attribute binding. Everything on the right side of the [] can be any typescript expression. -->
+<div><img [src]="image" [class]="imageStyle" (click)="imageClicked()"></div>
+
+<!-- <p>picture2 works!!ß</p>
+
+<img src="https://media.istockphoto.com/id/1453241155/photo/curious-cat-sitting-while-looking-at-camera.jpg?s=2048x2048&w=is&k=20&c=Qsa84QouXsVbZqXAvUloK82SmC1ysc1w-O8EPjgtZOc=" alt="Photo of a cat" class="thumbnail"> -->

@@ -1,0 +1,38 @@
+Deleted:
+App component spec
+app routing module
+
+Remove the unnecessary stuff inside app.module.ts
+app.component.html -> delete everything.
+    - insert some simple html to see if it is working.
+
+-----------------------------------------------New Section-----------------------------------------------
+
+Create a number component
+- Up and down buttons to increase/decrease the number
+- button to console.info the number
+
+Additional:
+- Checkbox -> to make console.info to output a -ve number
+
+Extend:
+Take the number component, and put two numbers side by side
+
+- Managed to extend it so that we can calculate the result of the 2 numbers. Didn't fully implement the negative calculations, because too much to do.
+
+-----------------------------------------------New Section-----------------------------------------------
+He explained some stuff here
+model view view presenter
+
+- each component is like an mvc
+
+*****
+Input - from the parent into the child (use attribute binding to pass the value in) -> []
+
+Whatever happens in the child, the parent can't see.
+
+To allow the parent to see, need to pass in a function - "When this event happens, tell the parent" -> (eventName) -> @Output
+When this event happens, call this function
+
+See the app.component.html for an example
+

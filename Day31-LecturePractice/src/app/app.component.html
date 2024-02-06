@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Simple Addition!!!</h1>
+  <div class="number-container">
+    <h2>Selected:{{ selection1 }}</h2>
+    <!-- <h2 (selected)="selectedNumber($event)">Selected: {{ selection }}</h2> -->
+    <app-number [min]="0" [max]="20" (selected)="selectedNumber($event, 1)" #number1></app-number>
+  </div>
+  <div class="number-container">
+    <h2>Selected:{{ selection2 }}</h2>
+    <app-number [min]="0" [max]="20" (selected)="selectedNumber($event, 2)" #number2></app-number>
+  </div>
+  <div class="calculated-number-container">
+    <app-calculated-number [calculatedNumber1]="number1.value" [calculatedNumber2]="number2.value"></app-calculated-number>
+  </div>
+  
+  <!-- <app-number [min]="0" [max]="20" (selected)="selectedNumber($event)" (valueChanged)="valueToSend($event)" #number1></app-number>
+  <app-number [min]="0" [max]="20" (selected)="selectedNumber($event)" (valueChanged)="valueToSend($event)" #number2></app-number> -->
+  
+</div>

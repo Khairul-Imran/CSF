@@ -1,0 +1,9 @@
+.button-row {
+    display: flex; /* Use Flexbox layout */
+  }
+  
+  .button-row button,
+  .button-row .checkbox {
+    margin-right: 10px; /* Add spacing between buttons */
+  }
+  

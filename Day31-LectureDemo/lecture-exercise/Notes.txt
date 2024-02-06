@@ -1,0 +1,76 @@
+He talked about the Document Object Model (DOM)
+- Connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory.
+
+Then he went through some of the CLI commands
+
+
+------------------------------------------------Next Section------------------------------------------------
+Started by creating a new angular application
+- ng new [project name] --standalone=false
+- For the Server-Side Rendering, should have chosen No for now (I chose Y lol)
+
+- When you create a new project, Angular creates a git repo for you automatically (git init)
+- Also installed Angular DevTools Chrome extension
+
+Files for deploying stuff (will use in the future)
+- package-lock.json
+- package.json
+- The last 3 tsconfig files
+
+index.html - loads the angular app -> don't need to touch
+main.ts - starts the anguolar app
+styles.css - global styling
+
+app folder/app.module.ts -> main module that starts the program
+
+Deleted some files (like the routing - not using for now)
+
+Deleted router-outlet at the end of app.component.html
+
+He showed how to inspect/examine the devtools in the browser for our application
+Inspect > Angular tab
+
+For now we will be touching only the app folder under src
+
+Created a component folder, with the picture component
+Every component will have a css,ts,html file
+
+
+*******IMPORTANT, know how these connect to each other*******
+Every component must belong to a module**************
+It must be included inside app.module.ts 
+
+Added this into app.component.html:
+<app-picture2></app-picture2>
+
+Notice that inside the component's html, there is already some stuff there by default (picture2 works!)
+
+- Added a photo to test
+
+------------------------------------------------Next Section------------------------------------------------
+- After teabreak
+
+- added some css styling
+
+- Showed binding examples
+
+- Created an interface PictureData
+
+- ....
+
+- Events (@Output)
+
+- We defined our own events too. (understand how these connect between the picture and main components)
+
+- ..
+
+- Created another history component
+    - Need to understand how the data is passed from the picture component -> main component -> history component
+
+
+    push to the back: a.push("abc")
+    remove from the back: a.pop()
+    push to the front: a.unshift("abc")
+    remove from the front: a.shift()
+
+

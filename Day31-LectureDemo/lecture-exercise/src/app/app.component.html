@@ -1,0 +1,23 @@
+<h1><code>Hello, world</code></h1>
+
+<!-- We can define custom attributes for our element too (Done using Input)  
+<app-picture2 image="https://i.natgeofe.com/k/55256f3f-2cf1-4b93-9d95-a13b0faa30a6/Mom-and-Babies_Polar-Bear_KIDS_0223-crop_3x2.jpg" caption="Polar bears are white!"></app-picture2> -->
+
+<h2>You have {{ images.length }} images.</h2>
+
+
+<table>
+    <tr>
+        <td>
+            <!-- $event name is fixed -->
+            <app-picture2 *ngFor="let i of images" image="{{ i.url }}" caption="{{ i.text }}" (imageEvent)="imagePressed($event)"></app-picture2>
+        </td>
+        <td>
+            <app-history [history]="pastCaptions"></app-history>
+        </td>
+    </tr>
+</table>
+
+
+<!-- Alternative -->
+<!-- <app-picture2 *ngFor="let i of images" [image]="i.url" [caption]="i.text"></app-picture2> -->
