@@ -1,0 +1,10 @@
+1. Import ReactiveFormsModule into app.module.ts
+
+(inside todo component)
+2. Created the necessary models (Todo and Task)
+
+3. Inject an instance of FormBuilder
+
+4. Implement OnInit
+
+5. Create a FormGroup variable.

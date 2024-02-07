@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './models';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Day32-Workshop';
+
+  todoListInParent: Todo[] = [];
+
+  receiveFormInput(event: Todo): void {
+    console.log(event);
+    this.todoListInParent.push(event);
+  }
 }
