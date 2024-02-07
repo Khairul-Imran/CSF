@@ -1,0 +1,31 @@
+- Import onInit, and implement its method.
+
+- create friendsForm variable
+
+- create createFriendsForm method.
+- Initialise the friends form inside your onInit
+- Bind it in your html
+    - [formGroup]
+    - formControlName
+
+- put the [disabled] in your form buttons
+
+- did the create() method -> reading directly from you friendsForm
+
+- Did the newFriend method
+
+- Started on the app component.ts' methods
+- Started on the app component html
+
+- He had a friends-list component, worked on that.
+- Notice the arrays are the same between the app and friends-list
+- So he is just passing the index, no need to worry that the arrays are changing.
+
+- He showed onChanges
+
+He showed:
+- If it is a new entry, mute update
+- If it is an existing entry, should mute add
+(updateMode, cannotCreate(), cannotUpdate())
+
+- Will redo this.

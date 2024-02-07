@@ -1,0 +1,14 @@
+<h1>Friend Form!</h1>
+
+<app-friend [existingFriend]="selectedFriend" (passFormDetails)="addedFriend($event)"></app-friend>
+
+<div *ngIf="friends.length > 0; else noFriends">
+  <div *ngFor="let f of friends; let i = index">
+    <h4>{{ f.name }}</h4>
+    <button (click)="selectFriendToPopulate(i)">x</button>
+  </div>
+</div>
+
+<ng-template #noFriends>
+  <h2>You have no friends right now.</h2>
+</ng-template>

@@ -1,0 +1,58 @@
+<h2>Todo Form</h2>
+
+<ul>
+    <li>pristine {{ friendForm.pristine }}</li>
+    <li>dirty {{ friendForm.dirty }}</li>
+    <li>invalid {{ friendForm.invalid }}</li>
+</ul>
+
+<!-- submit has to match the button's submit action -->
+<form [formGroup]="friendForm" (submit)="processForm()">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" size="30" formControlName="name">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email" size="30" formControlName="email">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Phone</td>
+            <td>
+                <input type="text" size="30" formControlName="phone">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Date of Birth</td>
+            <td>
+                <input type="date" size="30" formControlName="dob">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Friend</td>
+            <td>
+                <input type="checkbox" formControlName="friend">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <!-- Only allow the button to be pressed if the form is valid -->
+                <button type="submit" [disabled]="isFriendInvalid()">Add Friend</button>
+                <!-- <button type="submit" [disabled]="todoForm.invalid">Create</button> -->
+                <!-- <button type="button" (click)="addTask()">Update</button> -->
+                <button [disabled]="isFriendInvalid()">Update</button>
+            </td>
+        </tr>
+    </table>
+
+</form>

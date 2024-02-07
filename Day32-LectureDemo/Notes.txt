@@ -1,0 +1,22 @@
+We have the todo data
+- Now we need to pass that data to the parent,
+- And clear the form.
+
+
+Lecture Task
+
+Name
+Email
+Phone
+DOB
+Friend checkbox
+Add button -> Adds friend to the list of friends on the right
+Update Button -> Updates friend info.
+
+When you click on the names on the right, it will repopulate the data in the form on the left.
+
+Create an object model to hold this information.
+- to make it harder, can add hobbies (array) -> similar to tasks
+
+You don't really need the submit event to precess the form.
+One of the fields should be like a primary key (cannot be edited?)
