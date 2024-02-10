@@ -1,0 +1,72 @@
+First he showed how to use @ViewChild
+- We used View child to manipulate text in the child from our parent
+
+
+
+After Tea break:
+- For making your angular app progressive
+- ng add @angular/pwa
+
+There are new files inside the directory -> 
+- ngsw-config.json, 
+- manifest.webmanifest, 
+- angular.json, 
+- package.json
+
+- index.html is changed automatically to include the manifest.
+- app.module also now includes your sericeWorkerModule
+
+to generate you distribution folder
+- ng build
+- Has everything needed to run your app.
+
+To install the http-server:
+- npm i -g http-server
+
+To run your web server
+- http-server -p 8080 -c-1 dist/day33-lecture-demo/browser
+- -c-1 disables the caching
+
+- Use the second ip address to access it on your phone.
+
+Install bootstrap into your angular app
+- npm install bootstrap
+- Need to import in your css file too
+    - @import "../node_modules/bootstrap/dist/css/bootstrap.css"
+
+
+After lunch:
+- Install angular material
+- ng add @angular/material
+
+Also need hammerjs and animations (along with material)
+- ng add hammerjs
+- ng add @angular/animations
+
+
+- Create a new material module
+- ng g m Material
+- This creates a material-module folder that contains your module.
+
+- For whatever field/features you wanna use, need to import the specific module.
+- You will import several modules from material into this module that you just created. (into the imports/exports section)
+    - MatFormFieldModule
+    - MatInputModule
+    - MatIconModule
+    - ....
+    - (Need to know what to import, need do manually. No auto complete.) -> To make this easier, you can go to the angular material documentation, to the specific components you want to use, and copy the import statement from there.
+    - (Whatever you import, need to export too) -> Exposes your imports to the rest of the app
+    - (remember to import it in your main app module too.)
+
+- You need to then export the contents in this module to the rest of your app.
+
+To add on to the practice, Darryl went through a friend form example, and added the material stuff.
+
+
+
+He seemed to hint at practicing dates and drop down related stuff?
+
+
+
+REMEMBER TO IMPORT THE REACTIVE FORMS MODULE!!!!!!!!!!!!!!!!!!!!!INTO THE APP.MODULE
+ALSO JUST USE DEEP PURPLE

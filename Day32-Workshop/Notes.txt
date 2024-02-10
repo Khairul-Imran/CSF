@@ -8,3 +8,8 @@
 4. Implement OnInit
 
 5. Create a FormGroup variable.
+
+
+
+---------------------------------------------Lecture Notes---------------------------------------------
+

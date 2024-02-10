@@ -1,0 +1,30 @@
+<p>friend works!</p>
+<div>
+    <form [formGroup]="friendForm">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Enter your full name." formControlName="name" #fullName>
+            <mat-error *ngIf="friendForm.get('name')?.hasError('required')">Full name is mandatory.</mat-error>
+            <mat-error *ngIf="friendForm.get('name')?.hasError('minlength')">Full name is too short.</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="email" placeholder="Enter your email." formControlName="email" #email>
+            <mat-error *ngIf="friendForm.get('email')?.hasError('required')">Email is mandatory.</mat-error>
+            <mat-error *ngIf="friendForm.get('email')?.hasError('email')">Email format is incorrect.</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <textarea matInput formControlName="address" #address></textarea>
+            <mat-icon matSuffix>contact_mail</mat-icon>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput formControlName="dob" [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!friendForm.valid">Submit</button>
+    </form>
+</div>
