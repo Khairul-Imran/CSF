@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InventoryComponent } from './components/Inventory/inventory.component';
 import { ShoppingCartComponent } from './components/Shopping-Cart/shopping-cart.component';
+import { InventoryComponent } from './components/Inventory/inventory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InventoryComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,

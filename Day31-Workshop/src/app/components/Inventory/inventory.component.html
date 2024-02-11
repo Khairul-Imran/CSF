@@ -1,0 +1,27 @@
+<h1>Please Select</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th> Picture </th>
+            <th> Name </th>
+            <th> Quantity </th>
+            <!-- <th> Add to Cart </th> -->
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let i of availableItems">
+            <td>
+                <img src="/assets/items/{{ i.name }}.png" alt="A picture of {{ i.name }}" style="width: 60; height: 60px;" >
+            </td>
+            <td>{{ i.name.charAt(0).toUpperCase() + i.name.slice(1) }}</td>
+            <td>
+                {{ i.quantity }}
+            </td>
+            <td>
+                <button type="button" (click)="processItemRequest(i)">Add Item</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+/* Center the header */
+.header {
+    text-align: center;
+    margin-bottom: 20px; /* Add some space between header and components below */
+}
+
+/* Arrange the inventory and shopping cart side-by-side */
+.component-container {
+    display: flex; /* Use Flexbox layout */
+    justify-content: center;
+}
+
+/* Ensure each component takes up equal space */
+.component-container .component {
+    margin-right: 20px; /* Add spacing between components */
+    border: 1px solid #ccc; /* Add border around each component */
+    padding: 10px; /* Add padding to the components */
+}
+
+.cart {
+    width: 320px;
+}

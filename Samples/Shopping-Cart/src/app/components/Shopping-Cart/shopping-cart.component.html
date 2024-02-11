@@ -1,0 +1,35 @@
+<h1>My Cart</h1>
+
+<div *ngIf="cartItems.length === 0; else cartNotEmpty">
+    <p>Your cart is currently empty..</p>
+</div>
+
+<ng-template #cartNotEmpty>
+    <table>
+        <thead>
+            <tr>
+                <th> Picture </th>
+                <th> Name </th>
+                <th> Quantity </th>
+                <!-- <th> Remove </th> -->
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let i of cartItems">
+                <td>
+                    <img src="/assets/items/{{ i.name }}.png" alt="A picture of {{ i.name }}"
+                        style="width: 60; height: 60px;">
+                </td>
+                <td>{{ i.name }}</td>
+                <!-- <td>{{ i.name.charAt(0).toUpperCase() + i.name.slice(1) }}</td> -->
+                <td>
+                    {{ i.quantity }}
+                </td>
+                <td>
+                    <button type="button" (click)="removeItemFromCart(i)">Remove Item</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

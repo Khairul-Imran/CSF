@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="header">Welcome to Khairul's Emart!!</h1>
+  
+  <div class="component-container">
+    <app-inventory [inventory]="parentInventory" (onSelectedItem)="receiveSelectedItem($event)" class="component"></app-inventory>
+    
+    <app-shopping-cart [cartItems]="receivedItems" (onRemoveitem)="receiveRemovedItem($event)" class="component cart"></app-shopping-cart>
+  </div>
+</div>
