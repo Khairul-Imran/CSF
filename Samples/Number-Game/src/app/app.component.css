@@ -1,0 +1,20 @@
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.component-container {
+    display: flex; /* Use Flexbox layout */
+    justify-content: center;
+}
+  
+.component-container .component {
+    flex: 1; /* Distribute remaining space evenly */
+    margin-right: 20px; /* Add spacing between components */
+    padding: 10px;
+}
+  
+.calculated-number-container {
+    flex: 1;
+    margin-top: 70px;
+}

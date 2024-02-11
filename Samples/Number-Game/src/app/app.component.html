@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h1 class="header">Welcome to Khairul's Number Game!</h1>
+  
+  <div class="component-container">
+    <div class="component">
+      <h2>Selected Number: {{ parentSelectedNumber1 }} </h2>
+  
+      <app-number [min]="parentMin" [max]="parentMax" (currentSelectedNumber)="numberSelectedByChild($event, 1)" #number1></app-number>
+    </div>
+  
+    <div class="component">
+      <h2>Selected Number: {{ parentSelectedNumber2 }} </h2>
+  
+      <app-number [min]="parentMin" [max]="parentMax" (currentSelectedNumber)="numberSelectedByChild($event, 2)" #number2></app-number>
+    </div>
+    
+    <div class="component calculated-number-container">
+      <!-- The #number reference allows this component to distinguish between the different components.
+      .number is the attribute in the number component that we want to access. -->
+      <app-calculated-number [calculatedNumber1]="number1.number" [calculatedNumber2]="number2.number"></app-calculated-number>
+    </div>
+  </div>
+</div>
