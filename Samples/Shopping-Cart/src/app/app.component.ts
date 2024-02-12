@@ -44,7 +44,12 @@ export class AppComponent implements OnInit {
         quantity: 1
       };
       
-      this.receivedItems.push(newItem);
+      // this.receivedItems.push(newItem);
+      // An array with a new element will not be pushed to component -> won't detect.
+
+      this.receivedItems = [...this.receivedItems, newItem]; 
+      // This is the more proper way to do, if using onChange (in this case we didnt)
+      // Need to reassign a new reference for change detection to occur.
     }
 
     this.parentInventory[existingItemIndexInParentInventory].quantity--; // Removes the quantity from inventory.

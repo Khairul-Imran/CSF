@@ -1,5 +1,5 @@
 <h2>App Component Works!</h2>
 
-<app-todo (passFormDetails)="receiveFormInput($event)"></app-todo>
+<app-todo [todo]="parentTodoToBeUpdated" (passFormDetails)="receiveFormInput($event)"></app-todo>
 
-<app-todo-list [todoList]="todoListInParent"></app-todo-list>
+<app-todo-list [todoList]="todoListInParent" (onEdit)="receiveEditRequest($event)"></app-todo-list>

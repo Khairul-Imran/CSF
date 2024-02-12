@@ -1,6 +1,8 @@
 <h2>Todo Form</h2>
 
-<form [formGroup]="todoForm" (submit)="processForm()">
+<!-- In this case, we do not use (submit)="submitForm()" -->
+<!-- Use (click) instead to do the form actions. -->
+<form [formGroup]="todoForm">
     <table>
         <tr>
             <td>Description</td>
@@ -26,18 +28,22 @@
             <td>Due Date</td>
             <td>
                 <input type="date" size="30" formControlName="dueDate">
-                <!-- <div *ngIf="todoForm.get('date').errors?.['futureDate']">
+                <div *ngIf="todoForm.get('dueDate')?.hasError('futureDate')">
                     Please select a future date.
-                </div> -->
+                </div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
                 <!-- In this case, not using a isTodoInvalid() method. -->
-                <button type="submit" [disabled]="todoForm.invalid">Add Todo</button>
+                <button type="button" (click)="submitForm()" [disabled]="cannotSubmitTodo()" >Add Todo</button>
+                <!-- Alternative to using -> [disabled]="todoForm.invalid". The way we did above gives more customisation. -->
+                <!-- Ensures that all validations are passed before allowing the user to press the button. -->
+                <!-- This is how the slides show -->
+
+                <button type="button" (click)="editForm()" [disabled]="cannotEditTodo()" >Update</button>
             </td>
         </tr>
-
     </table>
 </form>

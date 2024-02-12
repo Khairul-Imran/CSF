@@ -7,7 +7,8 @@
                     <td>Description</td>
                     <td>Priority</td>
                     <td>Due Date</td>
-                    <td>Completed</td>
+                    <td>Status</td>
+                    <td>Edit</td>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +24,10 @@
                         {{ todo.dueDate }}
                     </td>
                     <td>
-                        {{ todo.completed}}
+                        {{ todo.completed ? 'Complete' : 'Incomplete' }}
+                    </td>
+                    <td>
+                        <button (click)="editTodo(todo.description)">Edit</button>
                     </td>
                 </tr>
 
