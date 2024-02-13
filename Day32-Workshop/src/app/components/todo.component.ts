@@ -14,10 +14,12 @@ export class TodoComponent  implements OnInit, OnChanges{
   
   todoForm!: FormGroup;
 
-  // Default.
-  // This todo will be changed from outside. Find out where.
+  // Note: better to have a default todo attribute, than to re-create a default form all the time.
+  defaultTodo: Todo = NO_TODO;
+
+  // Todo holder, to hold the edited todo from the parent.
   @Input()
-  todo: Todo = NO_TODO;
+  todoHolder: Todo = NO_TODO;
   
   @Output()
   passFormDetails = new Subject<Todo>();
@@ -25,20 +27,22 @@ export class TodoComponent  implements OnInit, OnChanges{
   @Output()
   updateTodo = new Subject<Todo>();
   
-  updateMode = false;
+  updateMode: boolean = false;
 
   ngOnInit(): void {
-    this.todoForm = this.createTodoForm(this.todo);
+    this.updateMode = false; // Initialise as false, incase.
+    this.todoForm = this.createTodoForm(this.defaultTodo);
   }
 
+  // When editing.
   ngOnChanges(changes: SimpleChanges): void {
-    console.info(">> Here are the changes: ", changes);
+    console.info(">> Here are the changes yet to be made: ", changes);
     // Whatever is inside the [] is the attribute you want to track the changes of.
-    this.todoForm = this.createTodoForm(changes['todo'].currentValue); 
-    this.updateMode = true;
+    this.todoForm = this.createTodoForm(changes['todoHolder'].currentValue); // Occupies the form controls with the todo that you want to update.
+    this.updateMode = true; // Entering updateMode
+    console.log("Something has changed, the updateMode is now: ", this.updateMode);
   }
 
-  
   
   private createTodoForm(todo: Todo): FormGroup {
     
@@ -66,30 +70,35 @@ export class TodoComponent  implements OnInit, OnChanges{
   }
   
   submitForm() {
-    // const todo = this.todoForm.value as Todo;
+    // this.updateMode = false; // Not in updateMode
     const todoFromForm: Todo = this.todoForm.value;
     console.log("process form: ", todoFromForm);
   
     // Fires the event.
-    this.passFormDetails.next(todoFromForm);//
-    this.todoForm = this.createTodoForm(this.todo); // Resets the todoForm.
+    this.passFormDetails.next(todoFromForm);
+    this.todoForm = this.createTodoForm(this.defaultTodo); // Resets the todoForm.
   }
 
   editForm() {
     const updatedTodo: Todo = this.todoForm.value;
     this.updateTodo.next(updatedTodo);
-    this.todoForm = this.createTodoForm(this.todo);
+    this.todoForm = this.createTodoForm(this.defaultTodo);
     this.updateMode = false;
   }
   
-  //
+
+  // *****These methods need to return TRUE for the buttons to be disabled*****
+  // Cannot press when in updateMode (== true)
   cannotSubmitTodo() {
     return this.todoForm.invalid || this.updateMode;
   }
 
-  //
+  // Cannot press when NOT in updateMode (== false) -> Which equals to true after the '!'.
   cannotEditTodo() {
-    return this.todoForm.invalid || this.updateMode;
+    return this.todoForm.invalid || !this.updateMode;
   }
-  
+
+  // Think of it like this: 
+  // Just ensure that your logic for the buttons are correct (what modes must you be in ?) -> remember, ultimately must return true for it to be disabled,
+  // then ensure that you change the mode accordingly in the relevant methods.
 }
