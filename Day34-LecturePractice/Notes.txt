@@ -1,0 +1,50 @@
+Observable -> from Rxjs library
+Allows you to write asynchronous code -> make asynchronous calls?
+
+Differences between Observable and Promises
+Promises -> 
+- allows a single value (call). Not lazy loading. You create a promise that will make a call to retrieve data (not lazy), async
+No function support
+Child handles the error
+- There is no sub/ unsub -> cannot be cancelled -> Need to wait for it to finish fully
+
+Observable 
+-> allows multiple values. Lazy loading (can be subscribed to), asynch,sync support
+Support various functions
+Error depends whether it is fulfilled or not.
+Different status:
+- pending
+- success/resolved
+- failure / rejected
+- complete
+- There is subscribe and unsubscribe -> can cancel the request once you got what you want
+
+
+---------------------------Started On Lecture Example---------------------------
+
+Installed Angular Material
+Installed json-server -> simulates an api locally in your device? (json-server not tested, assessment you need your own api)
+
+- Created the db.json file, to populate with employees (used by json-server)
+
+Imported the necessary Material-related stuff (copied from previous practice)
+
+- Created the service class with the command
+- Added the necessary methods for employees
+
+
+Then we created a new employee list component
+- He wanted to implement pagination using material, so we did that. (in the html)
+- He went through the sample html code from material's documentation.
+
+
+- Missed out something in the code. See his example.
+
+
+---------------------------Started On OpenWeather, and News API Example---------------------------
+
+- Logged into my OpenWeatherApp account.
+- Logged into NewsApi Account.
+
+- He went through how to work with JSON the data you get from the api
+- 

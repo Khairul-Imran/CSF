@@ -1,0 +1,22 @@
+<h1>These are my posts: </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of posts">
+            <td> {{p.id}} </td>
+            <td> {{p.title}} </td>
+            <td> {{p.body}} </td>
+            <td>
+                <!-- Edit and Delete actions following Employee Example -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+

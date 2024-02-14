@@ -1,0 +1,62 @@
+{
+  "employees": [
+    {
+      "id": "123",
+      "firstName": "Bob",
+      "lastName": "Bobby",
+      "email": "bob@gmail.com",
+      "dob": "1995-12-12T03:45:00Z",
+      "gender": "M",
+      "salary": 5000
+    },
+    {
+      "id": "124",
+      "firstName": "Catty",
+      "lastName": "Cat",
+      "email": "catty@gmail.com",
+      "dob": "1994-12-12T03:45:00Z",
+      "gender": "M",
+      "salary": 5000
+    },
+    {
+      "id": "125",
+      "firstName": "Daddy",
+      "lastName": "Dad",
+      "email": "daddy@gmail.com",
+      "dob": "1993-12-12T03:45:00Z",
+      "gender": "M",
+      "salary": 5000
+    },
+    {
+      "id": "126",
+      "firstName": "Elly",
+      "lastName": "Elle",
+      "email": "Elly@gmail.com",
+      "dob": "1995-12-12T03:45:00Z",
+      "gender": "M",
+      "salary": 5000
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Test 1",
+      "body": "This is test 1!!!"
+    },
+    {
+      "id": 2,
+      "title": "Test 2",
+      "body": "This is test 2!!!"
+    },
+    {
+      "id": 3,
+      "title": "Test 3",
+      "body": "This is test 3!!!"
+    },
+    {
+      "id": 4,
+      "title": "Test 4",
+      "body": "This is test 4!!!"
+    }
+  ]
+}

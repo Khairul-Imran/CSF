@@ -1,0 +1,46 @@
+<div>
+    <h1>{{ data ? 'Edit ': 'Add' }}</h1>
+</div>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput placeholder="Enter your First Name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput placeholder="Enter your Last Name" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Enter your email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>DOB</mat-label>
+            <input type="text" matInput [matDatepicker]="datePicker" placeholder="Enter your DOB" formControlName="dob">
+            <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker ></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <input type="text" matInput placeholder="Enter your gender" formControlName="gender">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Salary</mat-label>
+            <input type="number" matInput placeholder="Enter your salary" formControlName="salary">
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="action-button">
+        <button style="margin: 10px; " mat-raised-button color="secondary" type="submit">
+            {{ data ? "Update" : "Save"}}
+        </button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="false">Cancel</button>
+    </div>
+
+</form>
