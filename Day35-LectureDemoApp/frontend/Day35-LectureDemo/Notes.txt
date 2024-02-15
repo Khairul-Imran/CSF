@@ -1,0 +1,156 @@
+------------------------------Quick Revision for Day 34 (Observables and Promises)------------------------------
+
+- Promises: key front-end concept
+
+- Observables: generic version of promises (rxjs library)
+
+my.List.stream().map(v -> .....)
+
+myList: Observable -> A stream of data coming in, and you want to do something with it.
+
+map: observer
+
+Need to distinguish between streams (in java) and Observables
+Streams -> transform the data from one form to anothe. Keep in mind that java is multi-threaded. While JS is single-threaded.
+Observables -> To handle asynchronous events (for events (button click etc.) or http requests) *****
+
+In javascript, these streams of data (the list) are events
+
+Asynchronous concept:
+If a request isn't fully ready to be finished, it will wait at the side first.
+Then another request will be handled first.
+Once the original request is ready to be finished then it will be called back to be finished.
+
+
+-----------------------------------Next (important)-----------------------------------
+
+- He showed an example with forms (go see his repo for the example.)
+
+- New things: 
+    - subscribe -> subscribe to an observable -> returns a subscription -> need to be handled -> create a variable to be assigned to it (valueSub and statusSub)
+    - inside ngOninit -> form.valueChanges -> emits Observable
+    - form.statusChange -> he also added a .pipe to it, to return different values -> initially returned Valid/Invalid -> changed to True/False
+    - Pipe is like the processing stage, after processing, the subscription is sent after the processing is done*****
+
+    - ngOnDestroy -> in this case, used to unsub to the value and status changes (to avoid the memory leak)
+
+    - He added the form status in the html -> to show tap
+    - He then showed how to connect the observable pipe to the html -> create formStatus$ variable. ($ - convention to show it is an observable)
+    - then put it inside the html like the normal formStatus
+    - Keep in mind that formStatus$ is an observable (optional) -> a box that holds the value -> need to put ' | async '
+    
+    - Doing the above cuts out the middle man -> takes the observable and connect it to the view
+    - as compared to the first example he showed.
+
+    - He added the ngIf* to the observable. If the observable is not resolved, you won't see it.
+    - Whatever value that has been resolved in the observable, can be assigned to a variable (v) - v was initially formStatus$ | async
+- Also, async pipe will do the unsubscribing for you.
+
+
+-----------------------------------Next (after teabreak)-----------------------------------
+When to use observable vs promises
+-> if it is just called once (next) (or error) -> complete -> special case of observable where it returns 1 value -> promises (obs that fires once)
+-> if you are unsure when it ends (next, next ....) -> observable
+
+Coffee Shop Analogy for Defer and Promises:
+- Perspective of service provider -> deferring the service 
+- Perspective of Consumer -> promise that you will receive the coffee
+- promise (a pending value) is either resolved or is an error (you don't get your coffee despite paying)
+
+Once the buzzer has buzzed (resolved), it will never buzz again, until you make another order -> a new promise.
+
+
+He then showed how to create a promise
+- Showed individually how to use the resolve and reject.
+
+- Whatever is RETURNED inside the 'then' is also a promise, which means that you could chain another 'then' after it to return something else.
+
+E.g.
+p.then(value => {
+    console.info("result from promise: ", value)
+    return value.toLowerCase()
+}).then(value => {
+    console.info("after then: ", value)
+    return 5
+}).then(value => {
+    ......
+}).catch (error => {
+    console.info("error from promise: ", value)
+})
+
+What is the point of this though?
+These thens allows you to have dependency between statements. 
+******Only do the above if you need to perform a series asynchronous requests that are dependent on each other.******
+This is similar to try-catch.
+You can throw an exception to bypass the subsequent thens and goes straight to the next catch statement.
+
+E.g.
+p.then(value => {
+    console.info("result from promise: ", value)
+    return value.toLowerCase()
+}).then(value => {
+    console.info("after then: ", value)
+    throw 5
+}).then(value => {
+    ......
+}).catch (error => {
+    console.info("error from promise: ", value)
+})
+
+You can also continue with more thens if you return something from the catch.
+if you throw another exception it will go to the next catch
+
+
+------------------------
+When converting between Observable and Promises, you can take the Observable's first or last value.
+
+------------------------------Games Repo Example------------------------------
+- He created a spring-boot project
+- He did the method in the gamesRepo first
+- Then he created the model and controller
+
+- after that he started on the angular app. (the original work he did before teabreak was put inside the copied file)
+- He did the standard stuff inside the app component and corresponding html
+- Then he started on creating the Game model
+- Then he started on the game service. -> remember, need to add your service in your providers section in app.module.ts
+    - He injected the HttpClient
+    - First method returns an observable that is an array of games. - Learnt this already, standard.
+    - He added functionality in the app.component (processForm())
+    - Remember that you must subscribe for Observables (added some stuff for this to work)
+
+When the request was successfully sent to the backend, we encountered the CORS error.
+    - he explained when CORS issues occur (due to different domain or from https -> http)
+    - Also explained that some resources are allowed (no CORS issues -> media resources (images etc.))
+    - Insert the CORS header (annotation in your controller) @CrossOrigin(origins = {"http://localhost:4200"})
+
+
+------------------------------After Lunch------------------------------
+- After finishing the name search (done)
+- Return all the comments for a specific game id (in spring first)
+- Then do it in the client side
+
+Refer to his sample for the backend:
+
+Started on frontend:
+- He showed how to convert your observable to a promise (easier to use if you're returning just one)
+    - You can either take the first or last value
+    - In his example, he is taking the last value.
+
+
+He now wants to return one result
+
+truthy/falsey (!!)
+Starting from undefined -> (!) convert to boolean (now it becomes true) -> (!) flip the value back to get its actual value (false)
+undefined -> true -> false
+
+--------------------------------After teabreak--------------------------------
+
+Now he wants to show how to chain observables.
+(he commented out the promises chaining example.)
+
+- Inside the sample, he uses switchMap instead of map
+
+
+
+From the PAF Assessment:
+Generate an angular frontend to retrieve the drop down list of the australian suburbs (the first page)
