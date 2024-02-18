@@ -1,0 +1,27 @@
+In his spring boot service, he is using a read-write lock.
+-> only needed in this case, when you're not using a database.
+-> if I am reading, everyone can read.
+-> If I am writing, the read lock has to wait for me to finish writing
+
+write -> exclusive
+read -> shared
+
+---------------------------------------------------------------------------
+Try to dockerise this whole app (front and backend)
+- compile the frontend -> copy them to the static folder in your SB
+- Need 3 stage dockerisation 
+    first to build angular
+    second to copy the built angular one to the static folder 
+    third deploy?
+    - The 2nd and 3rd step has been done before in previous deployments.
+    - Just need to add the first part at the top of the dockerfile
+
+Using @Input and @Output vs Using services
+-> @Input and output requires more documentation -> allows you to understand more about the structure
+-> Services -> less documentation -> need to read more code to know what is happening.
+
+---------------------------------------------------------------------------
+
+
+
+

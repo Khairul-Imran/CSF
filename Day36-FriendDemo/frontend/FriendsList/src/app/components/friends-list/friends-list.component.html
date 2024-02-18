@@ -1,0 +1,36 @@
+<h3>Friends:</h3>
+
+<div *ngIf="friendList.length > 0; else noFriends">
+    <table>
+        <div>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Telephone</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let friend of friendList; let i = index">
+                    <td>
+                        {{ friend.name }}
+                    </td>
+                    <td>
+                        {{ friend.email }}
+                    </td>
+                    <td>
+                        {{ friend.telephone }}
+                    </td>
+
+                </tr>
+                
+            </tbody>
+        </div>
+    </table>
+</div>
+
+<button type="button" [routerLink]="['/add']">Add Friend</button>
+
+<ng-template #noFriends>
+    <h2>You have no friends right now.</h2>
+</ng-template>

@@ -1,0 +1,4 @@
+Here we practice by navigating through the different animal pages 
+- using the html way
+- and the programmatic way
+

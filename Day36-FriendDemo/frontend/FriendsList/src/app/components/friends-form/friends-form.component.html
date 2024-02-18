@@ -1,0 +1,36 @@
+<p>Add a new friend!</p>
+
+<form [formGroup]="friendForm">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" size="30" formControlName="name">
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email" size="30" formControlName="email">
+            </td>
+        </tr>
+        <tr>
+            <td>Telephone</td>
+            <td>
+                <input type="text" size="30" formControlName="telephone">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" (click)="submitForm()" [disabled]="friendForm.invalid" >Add Todo</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+<div>
+    <button type="button" [routerLink]="['']">Go back to Friends List</button>
+</div>
+

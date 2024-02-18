@@ -1,0 +1,5 @@
+1. Created the bedandbreakfast service.
+2. Imported the necessary things inside app.module.ts 
+    [service, ReactiveFormsModule, HttpClientModule]
+
+3. Created the searchSuburbs method in the service.

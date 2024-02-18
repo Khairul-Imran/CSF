@@ -1,17 +1,17 @@
 ------------------------------Quick Revision for Day 34 (Observables and Promises)------------------------------
 
-- Promises: key front-end concept
+- Promises: key front-end concept (from javascript)
 
 - Observables: generic version of promises (rxjs library)
 
-my.List.stream().map(v -> .....)
+myList.stream().map(v -> .....)
 
 myList: Observable -> A stream of data coming in, and you want to do something with it.
 
 map: observer
 
 Need to distinguish between streams (in java) and Observables
-Streams -> transform the data from one form to anothe. Keep in mind that java is multi-threaded. While JS is single-threaded.
+Streams -> transform the data from one form to another. Keep in mind that java is multi-threaded. While JS is single-threaded.
 Observables -> To handle asynchronous events (for events (button click etc.) or http requests) *****
 
 In javascript, these streams of data (the list) are events
@@ -154,3 +154,39 @@ Now he wants to show how to chain observables.
 
 From the PAF Assessment:
 Generate an angular frontend to retrieve the drop down list of the australian suburbs (the first page)
+
+
+
+-------------------------------------------Continued for Day 36 (Friday)-------------------------------------------
+
+- He compared the differences between thymeleaf and angular
+
+Thymeleaf
+1. Browser sends the request to springboot
+2. Gets data from the DB
+3. Data is returned as domain objects
+4. Domain object is combined with thymeleaf template to produce the html
+5. The html is returned to the client
+
+Angular
+- In angular, When the browser request the index.html page, you are requesting to get the angular app -> to load the angular application (see slide). The index page has the html structure, css style, and js.
+
+1. Request to get the angular app
+2. web server returns the index.html, css and js
+3. once you get everything, the angular app starts
+4. angular app starts to request data from the springboot app.
+5. Then you get the data from the db 
+6. This data is returned as a domain object (this part is the same as in thymeleaf)
+7. Send the data back to the client as json
+8. Json is combined with angular template to produce html
+
+
+Key differences:
+- With thymeleaf, Html is produced on the server (server-side rendering)
+- While the html is produced on the client (client-side rendering)
+
+- With thymeleaf, springboot determines how you view the data, it returns the html to the browser
+- While with angular, springboot just returns the json data, allowing the client application to determine how the data is displayed
+
+
+

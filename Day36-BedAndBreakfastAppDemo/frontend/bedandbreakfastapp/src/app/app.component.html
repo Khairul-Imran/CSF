@@ -1,0 +1,25 @@
+<h1>Bed And Breakfast Search!</h1>
+
+<form [formGroup]="form" (submit)="processForm()">
+  <table>
+    <tr>
+      <td>Suburb Name:</td>
+      <td>
+        <select>
+          <option *ngFor="let suburb of dropdown$ | async as suburbs" [value]="suburb">{{ suburb }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit" [disabled]="form.invalid"> Search </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<ng-template #noSearch>
+  <h2>No results yet</h2>
+</ng-template>

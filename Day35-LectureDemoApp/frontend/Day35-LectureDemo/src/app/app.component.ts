@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void { }
 
-  processForm() { // Incomplete
+  processForm() {
     const searchValue: string = this.form.value['search']
     console.info('>>> value: ', searchValue)
 

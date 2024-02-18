@@ -1,0 +1,21 @@
+<h3>Please select which page to go to.</h3>
+
+<div>
+    <button [routerLink]="['/cat']"> Go to the cat page using HTML method! </button>
+</div>
+<div>
+    <button [routerLink]="['/dog']"> Go to the dog page using HTML method! </button>
+</div>
+<div>
+    <button [routerLink]="['/fish']"> Go to the fish page using HTML method! </button>
+</div>
+<br><br>
+<div>
+    <button (click)="toCat()">Go to the cat page programmatically</button>
+</div>
+<div>
+    <button (click)="toDog()">Go to the dog page programmatically</button>
+</div>
+<div>
+    <button (click)="toFish()">Go to the fish page programmatically</button>
+</div>

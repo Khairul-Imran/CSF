@@ -1,0 +1,94 @@
+-------------------------------------------Continued for Day 36 (Friday)-------------------------------------------
+
+- He compared the differences between thymeleaf and angular
+
+Thymeleaf
+1. Browser sends the request to springboot
+2. Gets data from the DB
+3. Data is returned as domain objects
+4. Domain object is combined with thymeleaf template to produce the html
+5. The html is returned to the client
+
+Angular
+- In angular, When the browser requests the index.html page, you are requesting to get the angular app -> to load the angular application (see slide). The index page has the html structure, css style, and js.
+
+1. Request to get the angular app
+2. web server returns the index.html, css and js
+3. once you get everything, the angular app starts
+4. angular app starts to request data from the springboot app.
+5. Then you get the data from the db 
+6. This data is returned as a domain object (this part is the same as in thymeleaf)
+7. Send the data back to the client as json
+8. Json is combined with angular template to produce html
+
+
+Key differences:
+- With thymeleaf, Html is produced on the server (server-side rendering)
+- While the html is produced on the client (client-side rendering)
+
+- With thymeleaf, springboot determines how you view the data, it returns the html to the browser
+- While with angular, springboot just returns the json data, allowing the client application to determine how the data is displayed
+
+
+----------------------------------------------Lecture Demo (SPA)----------------------------------------------
+
+Inside app.module.ts
+1. First import the RouterModule
+2. Define a list of our routes
+3. Import the RouterModule.forRoot(appRoutes)
+4. Go back and add your routes.
+    - Need to create your necessary components that you want to add to the routes
+5. Need to tell where do you want this components to be displayed (ROUTER OUTLETS)
+    - In this course, we need to create just one
+    - added inside you main app component
+6. We added some photos
+....
+7. There's two different ways to do the routing -> in html or in typescript (programmatically)
+
+
+Remember, when defining the routes, don't need the '/'. But when choosing the routes to use, need the '/'
+
+Lost track. Need to go back and try the services again.
+
+
+
+-----------------------------------------He started a NEW BGG App Example-----------------------------------------
+
+1. Started by importing the necessary things.
+2. Also started on the path routes (landing page and catch all)
+3. Inserted the router-outlet into the app.component.html
+
+4. Started on the BGGService (remember to provide it in the app.module).
+    - Inject your HttpClient
+    (These methods need to match what is available on the backend)
+    - getGameList() method -> get request to retrieve the game list
+
+
+5. Created the game-list component
+    - Implements OnInit
+    - Inject your BGG Service
+    - Add the observable variable
+
+6. Added the code for the game-list html.
+
+7. Added to the available paths (for comments)
+
+8. Added new method for comments in the Service.
+
+- for things that won't change -> use snapshot.
+
+For transferring data between pages, he also showed how to do it, without using routerlink
+- We used a button (Go) to navigate
+
+
+
+
+
+
+
+
+
+
+
+
+
